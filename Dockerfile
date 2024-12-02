@@ -23,7 +23,7 @@ RUN npm run build --omit=dev
 FROM nginx:stable-bookworm
 
 # Copia los archivos compilados desde la etapa de construcción
-COPY --from=build /app/dist/proyecto/browser /usr/share/nginx/html
+COPY --from=build /app/dist/app-movies/browser /usr/share/nginx/html
 
 # Exponer el puerto 80
 EXPOSE 80
