@@ -1,0 +1,104 @@
+@import "../../../../../../assets/variables.scss";
+
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+  background-color: $principal;
+}
+
+.form-container {
+  background-color: $second;
+  border-radius: 8px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  color: $accentPrincipal;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: $accentPrincipal;
+}
+
+input[type='text'],
+input[type='file'] {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid $accentPrincipal;
+  border-radius: 4px;
+  background-color: $principal;
+  color: $text;
+  font-size: 1rem;
+}
+
+input[type='file'] {
+  padding: 0.3rem 0.5rem;
+}
+
+input[type='file']::-webkit-file-upload-button {
+  background-color: $accentPrincipal;
+  color: $principal;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  margin-right: 1rem;
+}
+
+.image-preview {
+  margin-top: 1rem;
+  text-align: center;
+
+  img {
+    max-width: 100%;
+    max-height: 200px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.button {
+  background-color: $accentPrincipal;
+  color: $principal;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: darken($accentPrincipal, 10%);
+  }
+
+  &.cancel {
+    background-color: transparent;
+    border: 1px solid $accentPrincipal;
+    color: $accentPrincipal;
+
+    &:hover {
+      background-color: rgba($accentPrincipal, 0.1);
+    }
+  }
+}

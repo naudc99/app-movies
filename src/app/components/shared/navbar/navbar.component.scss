@@ -1,0 +1,90 @@
+@import '../../../../assets/variables.scss';
+
+.custom-navbar {
+  background-color: $second;
+
+  .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: $accentPrincipal;
+    text-decoration: none;
+
+    &:hover {
+      color: $accentSecond;
+    }
+  }
+
+  .nav-link {
+    color: $text;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $accentPrincipal;
+    }
+
+    &.active {
+      font-weight: bold;
+      color: $accentPrincipal;
+    }
+  }
+
+  .navbar-toggler {
+    border-color: $accentPrincipal;
+    color: $accentPrincipal;
+    padding: 0.25rem 0.5rem;
+
+    &:hover, &:focus {
+      color: $accentSecond;
+      outline: none;
+      box-shadow: none;
+    }
+  }
+
+  .navbar-toggler-icon {
+    background-image: none;
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    vertical-align: middle;
+    content: "";
+    background: no-repeat center center;
+    background-size: 100% 100%;
+
+    &::before {
+      content: "\2630"; // Unicode character for "trigram for heaven" (☰)
+      font-size: 1.5rem;
+      line-height: 1;
+      color: $accentPrincipal;
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .custom-navbar {
+    .navbar-collapse {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: $second;
+      padding: 1rem;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+
+    .navbar-nav {
+      flex-direction: column;
+    }
+
+    .nav-item {
+      margin-bottom: 0.5rem;
+    }
+
+    .nav-link {
+      padding: 0.5rem 0;
+    }
+  }
+}
+

@@ -1,0 +1,14 @@
+<div class="dialog-overlay">
+    <div class="dialog-container">
+      <h1 class="dialog-title">Confirmar Eliminación</h1>
+      <div class="dialog-content">
+        <p class="confirmation-message">
+          ¿Estás seguro de que quieres eliminar la reseña <span class="review-name">{{ data.review.comment }}</span>?
+        </p>
+      </div>
+      <div class="dialog-actions">
+        <button (click)="onNoClick()" class="btn btn-cancel">Cancelar</button>
+        <button (click)="onDelete()" class="btn btn-delete">Eliminar</button>
+      </div>
+    </div>
+  </div>

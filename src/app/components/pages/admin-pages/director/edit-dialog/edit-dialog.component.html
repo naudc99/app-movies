@@ -1,0 +1,34 @@
+<div class="dialog-overlay">
+  <div class="dialog-container">
+    <h1 class="dialog-title">Editar Director</h1>
+    <div class="dialog-content">
+      <div class="form-group">
+        <label for="director-name">Nombre del Director</label>
+        <input
+          type="text"
+          id="director-name"
+          [(ngModel)]="data.director.name"
+          class="input-field"
+        />
+      </div>
+      <div class="form-group">
+        <label for="director-photo">Foto del Director</label>
+        <input
+          type="file"
+          id="director-photo"
+          (change)="onFileSelected($event)"
+          accept="image/*"
+          class="file-input"
+        />
+        <label for="director-photo" class="file-label">Seleccionar archivo</label>
+      </div>
+      <div *ngIf="previewImage" class="image-preview">
+        <img [src]="previewImage" alt="Vista previa" />
+      </div>
+    </div>
+    <div class="dialog-actions">
+      <button (click)="onNoClick()" class="btn btn-cancel">Cancelar</button>
+      <button (click)="onSave()" class="btn btn-save">Guardar</button>
+    </div>
+  </div>
+</div>

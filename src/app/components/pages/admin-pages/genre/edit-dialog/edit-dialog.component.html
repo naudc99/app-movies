@@ -1,0 +1,20 @@
+<div class="dialog-overlay">
+    <div class="dialog-container">
+      <h1 class="dialog-title">Editar Género</h1>
+      <div class="dialog-content">
+        <div class="form-group">
+          <label for="genre-name">Nombre del Género</label>
+          <input
+            type="text"
+            id="genre-name"
+            [(ngModel)]="data.genre.name"
+            class="input-field"
+          />
+        </div>
+      </div>
+      <div class="dialog-actions">
+        <button (click)="onNoClick()" class="btn btn-cancel">Cancelar</button>
+        <button (click)="onSave()" class="btn btn-save">Guardar</button>
+      </div>
+    </div>
+  </div>

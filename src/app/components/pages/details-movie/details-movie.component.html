@@ -1,0 +1,92 @@
+<div class="container" *ngIf="movie">
+  <div class="movie-details">
+    <div class="movie-poster">
+      <img [src]="'data:image/jpeg;base64,' + movie.poster" [alt]="movie.title" class="movie-poster">
+    </div>
+    <div class="movie-info">
+      <h2 class="movie-title">{{ movie.title }}</h2>
+      <div class="movie-meta">
+        <span>{{ movie.year }}</span>
+        <span class="separator">|</span>
+        <span>{{ genresString }}</span>
+        <span class="separator">|</span>
+        <span>{{ movie.duration }} min</span>
+        <span class="separator">|</span>
+        <span class="movie-rating">{{ movie.rating | number: '1.2-2' }}<mat-icon>star</mat-icon></span>
+      </div>
+      <div class="action-buttons">
+        <button class="action-button favorite" (click)="toggleFavorite()">
+          <mat-icon>{{ isFavorite ? 'favorite' : 'favorite_border' }}</mat-icon>
+          {{ isFavorite ? 'Eliminar de favoritos' : 'Añadir a favoritos' }}
+        </button>
+        <button class="action-button watchlist" (click)="toggleWatched()">
+          <mat-icon>{{ isWatched ? 'visibility_off' : 'visibility' }}</mat-icon>
+          {{ isWatched ? 'Eliminar de vistas' : 'Añadir a vistas' }}
+        </button>
+        <button class="action-button rate-movie" (click)="openReviewDialog()" [disabled]="!loginService.userIsLogged || hasReviewed">
+          <mat-icon>rate_review</mat-icon>
+          Valorar Película
+        </button>
+      </div>
+      
+      
+      <p class="synopsis">{{ movie.synopsis }}</p>
+      <div class="director" *ngIf="movie.director">
+        <img [src]="'data:image/jpeg;base64,' + movie.director.profile_photo" [alt]="movie.director.name">
+        <div class="director-info">
+          <h3>{{ movie.director.name }}</h3>
+          <p>Director</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cast-crew">
+    <h3>Reparto Principal</h3>
+    <div class="cast-list">
+      <div class="cast-member" *ngFor="let actor of movie.actors">
+        <img [src]="'data:image/jpeg;base64,' + actor.profile_photo" [alt]="actor.name">
+        <p class="actor-name">{{ actor.name }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="trailer" *ngIf="safeTrailerUrl">
+    <h3>Tráiler</h3>
+    <div class="trailer-container">
+      <iframe [src]="safeTrailerUrl" title="Movie Trailer" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <div class="reviews-section">
+    <h3>Reseñas</h3>
+    <div class="reviews-list">
+        <div class="review" *ngFor="let review of reviews">
+            <div class="review-header">
+                <strong><img [src]="'data:image/jpeg;base64,' + userProfile[review.userId]" [alt]="userNames[review.userId]">{{ userNames[review.userId] || 'Cargando...' }}</strong>
+                <span class="review-score">{{ review.score }}<mat-icon>star</mat-icon></span>
+            </div>
+            <p class="review-comment">{{ review.comment }}</p>
+        
+            <div *ngIf="review.userId === loginService.userId" class="review-actions">
+              <div class="button-container">
+                <button class="edit-button" (click)="openEditDialog(review)">Editar</button>
+                <button class="delete-button" (click)="openDeleteDialog(review)">Eliminar</button>
+              </div>
+            </div>
+
+        </div>
+        <div *ngIf="reviews.length === 0" class="no-reviews">No hay reseñas disponibles.</div>
+    </div>
+
+    <div class="pagination-controls">
+        <button (click)="onPageChange(page - 1)" [disabled]="page === 0">Anterior</button>
+        <span>Página {{ page + 1 }} de {{ totalPages }}</span>
+        <button (click)="onPageChange(page + 1)" [disabled]="page + 1 === totalPages">Siguiente</button>
+    </div>
+</div>
+
+  
+
+  <a class="back-button" (click)="backToMovies()">Volver al Explorador</a>
+</div>

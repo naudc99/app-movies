@@ -1,0 +1,159 @@
+@import "../../../../../../assets/variables.scss";
+
+.dashboard-container {
+  padding: 2rem;
+  background-color: $principal;
+  min-height: 100vh;
+}
+
+.card {
+  background-color: $second;
+  border-radius: 8px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  color: $accentPrincipal;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.button {
+  background-color: $accentPrincipal;
+  color: $principal;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: darken($accentPrincipal, 10%);
+  }
+
+  &.edit {
+    background-color: $accentPrincipal;
+  }
+
+  &.delete {
+    background-color: #f44336;
+  }
+}
+
+.search-input {
+  padding: 0.75rem;
+  border-radius: 4px;
+  border: 1px solid $accentPrincipal;
+  background-color: $principal;
+  color: $text;
+  font-size: 1rem;
+  width: 250px;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+.genre-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  color: $text; // Changed text color to $text
+  
+  th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid rgba($text, 0.1);
+  }
+
+  th {
+    background-color: darken($second, 5%);
+    color: $accentPrincipal; // Kept header color as $accentPrincipal for contrast
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+  }
+
+  tr:hover {
+    background-color: rgba($accentPrincipal, 0.1);
+  }
+}
+
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+
+  .button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+// Pagination styles
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  gap: 1rem;
+
+  button {
+    @extend .button;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    background-color: $principal;
+    color: $accentPrincipal;
+    border: 2px solid $accentPrincipal;
+
+    &:hover:not(:disabled) {
+      background-color: $accentPrincipal;
+      color: $principal;
+    }
+
+    &:disabled {
+      border-color: lighten($accentPrincipal, 20%);
+      color: lighten($accentPrincipal, 20%);
+      background-color: $principal;
+    }
+  }
+
+  span {
+    color: $text;
+    font-weight: 500;
+  }
+}
+
+@media (max-width: 768px) {
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .search-input {
+    width: 100%;
+  }
+
+  .genre-table {
+    font-size: 0.9rem;
+
+    th, td {
+      padding: 0.75rem 0.5rem;
+    }
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+}

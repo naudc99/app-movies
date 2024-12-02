@@ -1,0 +1,46 @@
+<div class="container" *ngIf="userData">
+    <div class="profile-header">
+      <img [src]="'data:image/jpeg;base64,' + userData.image" [alt]="userData.name" class="profile-photo">
+      <div class="profile-info">
+        <h1>{{ userData.name }}</h1>
+        <p>{{ userData.email }}</p>
+        <button mat-button (click)="openEditDialog()">Editar</button>
+      </div>
+      
+    </div>
+  
+    <div class="movie-lists">
+        <div class="movie-list">
+          <h2>Películas Favoritas</h2>
+          <div *ngIf="favoriteMovies.length === 0">No tienes películas favoritas.</div>
+          <div class="movie-grid">
+            <div *ngFor="let movie of favoriteMovies" class="movie-card" (click)="goToMovieDetails(movie.movieId)">
+              <img [src]="'data:image/jpeg;base64,' + movie.poster" [alt]="movie.title" class="movie-poster">
+              <div class="movie-info">
+                <h3 class="movie-title">{{ movie.title }}</h3>
+                <p class="movie-year">{{ movie.year }}</p>
+                <button class="remove-button" (click)="removeMovieFromFavorites(movie.movieId); $event.stopPropagation()">
+                  <mat-icon>close</mat-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+        <div class="movie-list">
+            <h2>Películas Vistas</h2>
+            <div *ngIf="watchedMovies.length === 0">No has visto ninguna película.</div>
+            <div class="movie-grid">
+              <div *ngFor="let movie of watchedMovies" class="movie-card" (click)="goToMovieDetails(movie.movieId)">
+                <img [src]="'data:image/jpeg;base64,' + movie.poster" [alt]="movie.title" class="movie-poster">
+                <div class="movie-info">
+                  <h3 class="movie-title">{{ movie.title }}</h3>
+                  <p class="movie-year">{{ movie.year }}</p>
+                  <button class="remove-button" (click)="removeMovieFromWatched(movie.movieId); $event.stopPropagation()">
+                    <mat-icon>close</mat-icon>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+  </div>

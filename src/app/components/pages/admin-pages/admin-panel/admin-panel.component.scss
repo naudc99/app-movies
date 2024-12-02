@@ -1,0 +1,36 @@
+@import '../../../../../assets/variables.scss';
+
+.container {
+    display: flex;
+    height: 80vh;
+    background-color: $second;
+    margin-top: 30px;
+    border-radius: 10px;
+
+    mat-sidenav {
+        width: 250px;
+        background-color: $second;
+        padding: 10px;
+    }
+
+    .mat-sidenav-content {
+        flex: 1;
+        margin-left: 20px;
+    }
+
+    ::ng-deep .mdc-list-item__primary-text {
+        color: $text !important;
+    }
+    
+    .mdc-list-item {
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+
+        &:hover, &.active {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+    }
+
+    
+}

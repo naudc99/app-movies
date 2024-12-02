@@ -1,0 +1,453 @@
+@import "../../../../assets/variables.scss";
+
+:host {
+  display: block;
+  background-color: $principal;
+  color: $text;
+  font-family: 'Poppins', sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.movie-details {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.movie-poster {
+  flex: 0 0 300px;
+
+  img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  }
+}
+
+.movie-info {
+  flex: 1;
+}
+
+.movie-title {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  color: $accentPrincipal;
+}
+
+.movie-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  font-size: 1.1em;
+  color: $text;
+
+  .separator {
+    color: $accentSecond;
+  }
+  
+  .movie-rating {
+    display: flex;
+    align-items: center;
+    background-color: $accentPrincipal;
+    color: $principal;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-weight: bold;
+
+    mat-icon {
+      font-size: 18px;
+      height: 18px;
+      width: 18px;
+      margin-left: 5px;
+    }
+  }
+}
+
+.action-buttons {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.action-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 20px;
+  font-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+
+  mat-icon {
+    margin-right: 8px;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &.favorite {
+    background-color: $accentPrincipal;
+    color: $principal;
+
+    &:hover {
+      background-color: darken($accentPrincipal, 10%);
+    }
+  }
+
+  &.watchlist {
+    background-color: $accentPrincipal;
+    color: $principal;
+
+    &:hover {
+      background-color: darken($accentSecond, 10%);
+    }
+  }
+
+  &.rate-movie {
+    background-color: $accentPrincipal;
+    color: $principal;
+
+    &:hover {
+      background-color: darken($accentPrincipal, 10%);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      &:hover {
+        transform: none;
+      }
+    }
+  }
+}
+
+.synopsis {
+  font-size: 1.1em;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.director {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+
+  img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+
+  .director-info {
+    h3 {
+      margin: 0;
+      font-size: 1.2em;
+      color: $accentPrincipal;
+    }
+
+    p {
+      margin: 5px 0 0;
+      opacity: 0.8;
+    }
+  }
+}
+
+.cast-crew {
+  margin-bottom: 30px;
+
+  h3 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: $accentPrincipal;
+  }
+}
+
+.cast-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 20px;
+}
+
+.cast-member {
+  text-align: center;
+
+  img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  .actor-name {
+    font-weight: 600;
+    color: $accentPrincipal;
+    margin: 5px 0;
+  }
+}
+
+.trailer {
+  margin-top: 40px;
+
+  h3 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: $accentPrincipal;
+  }
+}
+
+.trailer-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 10px;
+  }
+}
+
+.reviews-section {
+  margin-top: 40px;
+
+  h3 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: $accentPrincipal;
+  }
+
+  .reviews-list {
+    .review {
+      background-color: $second;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease;
+
+      &:hover {
+        transform: translateY(-2px);
+      }
+
+      .review-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+
+        strong {
+          font-size: 1.1em;
+          color: $accentPrincipal;
+
+          img{
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-right: 20px;
+          }
+        }
+
+        .review-score {
+          display: flex;
+          align-items: center;
+          background-color: $accentPrincipal;
+          color: $principal;
+          padding: 5px 10px;
+          border-radius: 20px;
+          font-weight: bold;
+      
+          mat-icon {
+            font-size: 18px;
+            height: 18px;
+            width: 18px;
+            margin-left: 3px;
+          }
+        }
+      }
+
+      .review-comment {
+        margin: 0;
+        line-height: 1.6;
+        font-size: 1em;
+        color: $text;
+      }
+
+      .review-actions {
+        display: flex;
+        justify-content: center; /* Center the buttons */
+        margin-top: 10px; /* Add some space above the buttons */
+      }
+      
+      .button-container {
+        display: flex; /* Use flexbox for button alignment */
+        gap: 10px; /* Space between buttons */
+      }
+      
+      .edit-button,
+      .delete-button {
+        background-color: $accentPrincipal; /* Use your theme color */
+        color: $principal; /* Use your text color */
+        border: none;
+        border-radius: 20px; /* Rounded corners */
+        padding: 10px 15px; /* Padding for buttons */
+        font-size: 1em; /* Font size */
+        font-weight: bold; /* Bold text */
+        cursor: pointer; /* Pointer cursor */
+        transition: background-color 0.3s ease, transform 0.1s ease; /* Transition effects */
+      
+        &:hover {
+          background-color: darken($accentPrincipal, 10%); /* Darken on hover */
+          transform: translateY(-2px); /* Slight lift on hover */
+        }
+      
+        &:active {
+          transform: translateY(0); /* Reset on click */
+        }
+      }
+      
+      /* Add specific styles for delete button */
+      .delete-button {
+        background-color: $accentSecond; /* Assuming you have an error color for delete action */
+      
+        &:hover {
+          background-color: darken($accentSecond, 10%); /* Darken delete button on hover */
+        }
+      }
+      
+    }
+
+    .no-reviews {
+      text-align: center;
+      color: $text;
+      font-style: italic;
+    }
+    
+  }
+
+  .pagination-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+
+    button {
+      background-color: $accentPrincipal;
+      color: $principal;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: $accentSecond;
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+
+    span {
+      color: $text;
+    }
+  }
+}
+
+
+.back-button {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 10px 20px;
+  background-color: $accentPrincipal;
+  color: $principal;
+  text-decoration: none;
+  border-radius: 30px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $accentSecond;
+  }
+}
+
+@media (max-width: 768px) {
+  .movie-details {
+    flex-direction: column;
+  }
+
+  .movie-poster {
+    flex: 0 0 auto;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .action-button {
+    width: 100%;
+  }
+
+  .cast-list {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+
+  .director {
+    flex-direction: column;
+    text-align: center;
+
+    img {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+  }
+
+  .reviews-section {
+    .pagination-controls {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 10px;
+
+      button {
+        width: 100%;
+      }
+
+      span {
+        text-align: center;
+        margin: 10px 0;
+      }
+    }
+  }
+}

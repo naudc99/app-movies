@@ -1,0 +1,42 @@
+<div class="dashboard-container">
+    <div class="card">
+      <h2>Películas</h2>
+      <div class="toolbar">
+        <button class="button" (click)="addMovie()">Nueva Película</button>
+        <input type="text" placeholder="Buscar películas" class="search-input" [(ngModel)]="searchTerm" (keyup)="onSearch()">
+      </div>
+      <div class="table-container">
+        <table class="movie-table">
+          <thead>
+            <tr>
+              <th>Póster</th>
+              <th>Título</th>
+              <th>Director</th>
+              <th>Año</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let movie of movies">
+              <td>
+                <img [src]="'data:image/jpeg;base64,' + movie.poster" [alt]="movie.title" class="movie-poster">
+              </td>
+              <td>{{ movie.title }}</td>
+              <td>{{ movie.director.name }}</td>
+              <td>{{ movie.year }}</td>
+              <td class="action-buttons">
+                <button class="button edit" (click)="openEditDialog(movie)">Editar</button>
+                <button class="button delete" (click)="openDeleteDialog(movie)">Eliminar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+            <!-- Botones de navegación -->
+        <div class="pagination-controls">
+          <button (click)="onPageChange(page - 1)" [disabled]="page === 0">Anterior</button>
+          <span>Página {{ page + 1 }} de {{ totalPages }}</span>
+          <button (click)="onPageChange(page + 1)" [disabled]="page + 1 === totalPages">Siguiente</button>
+        </div>
+      </div>
+    </div>
+  </div>

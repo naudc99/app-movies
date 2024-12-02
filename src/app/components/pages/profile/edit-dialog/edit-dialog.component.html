@@ -1,0 +1,44 @@
+<div class="dialog-overlay">
+    <div class="dialog-container">
+      <h1 class="dialog-title">Editar Usuario</h1>
+      <div class="dialog-content">
+        <div class="form-group">
+          <label for="user-name">Nombre del Usuario</label>
+          <input
+            type="text"
+            id="user-name"
+            [(ngModel)]="data.user.name"
+            class="input-field"
+          />
+        </div>
+        <div class="form-group">
+          <label for="user-email">Email</label>
+          <input
+            type="email"
+            id="user-email"
+            [(ngModel)]="data.user.email"
+            class="input-field"
+          />
+        </div>
+        <div class="form-group">
+          <label for="user-photo">Foto de Perfil</label>
+          <input
+            type="file"
+            id="user-photo"
+            (change)="onFileSelected($event)"
+            accept="image/*"
+            class="file-input"
+          />
+          <label for="user-photo" class="file-label">Seleccionar archivo</label>
+        </div>
+        <div *ngIf="previewImage" class="image-preview">
+          <img [src]="previewImage" alt="Vista previa" />
+        </div>
+      </div>
+      <div class="dialog-actions">
+        <button (click)="onNoClick()" class="btn btn-cancel">Cancelar</button>
+        <button (click)="onSave()" class="btn btn-save">Guardar</button>
+      </div>
+    </div>
+  </div>
+  

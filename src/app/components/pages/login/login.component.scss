@@ -1,0 +1,60 @@
+@import '../../../../assets/variables.scss';
+
+.custom-card {
+    background-color: $second;
+    color: $text;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-title {
+    color: $accentPrincipal;
+  }
+  
+  .form-control {
+    background-color: $principal;
+    color: $text;
+    border: none;
+    border-radius: 4px;
+    padding: 0.5rem;
+  }
+  
+  .form-control:focus {
+    box-shadow: none;
+    outline: none;
+    border: 2px solid $accentPrincipal;
+  }
+  
+  label {
+    color: $text;
+  }
+  
+  .btn-primary {
+    background-color: $accentPrincipal;
+    color: $principal;
+    border: none;
+    transition: background-color 0.3s ease;
+    margin-top: 15px;
+  
+    &:hover {
+      background-color: $accentSecond;
+    }
+  }
+  
+  .text-danger {
+    font-size: 0.875rem;
+  }
+  
+  a {
+    color: $accentPrincipal;
+    text-decoration: none;
+  
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  
+  p {
+    color: $text;
+  }

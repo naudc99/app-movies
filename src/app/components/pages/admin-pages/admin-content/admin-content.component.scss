@@ -1,0 +1,18 @@
+@import '../../../../../assets/variables.scss';
+
+.admin-wrapper {
+    display: flex;
+}
+
+.admin-panel {
+    flex: 0 0 auto; 
+}
+
+.admin-content {
+    flex: 1; 
+    height: 80vh;
+    border-radius: 10px;
+    margin-top: 30px;
+    margin-right: 20px;
+}
+

@@ -1,0 +1,142 @@
+// Variables de color
+$principal: #2B4162;
+$second: #385F71;
+$accentPrincipal: #D7B377;
+$accentSecond: #8F754F;
+$text: #FFFFFF;
+
+.edit-review-dialog {
+  background-color: $principal; // Color de fondo principal
+  color: $text; // Color del texto
+  font-family: 'Poppins', sans-serif; // Fuente utilizada
+  padding: 24px; // Espaciado interno
+  border-radius: 10px; // Bordes redondeados
+}
+
+.dialog-title {
+  font-size: 2em; // Tamaño de la fuente del título
+  margin-bottom: 20px; // Margen inferior
+  color: $accentPrincipal; // Color del título
+}
+
+.dialog-content {
+  margin-bottom: 24px; // Margen inferior para el contenido del diálogo
+}
+
+.full-width {
+  width: 100%; // Ancho completo para los elementos
+}
+
+::ng-deep {
+  .mat-form-field {
+    width: 100%; // Ancho completo para el campo de formulario
+    margin-bottom: 20px; // Margen inferior para el campo de formulario
+  }
+
+  .mat-form-field-label {
+    color: $accentPrincipal !important; // Color de la etiqueta del campo
+  }
+
+  .mat-form-field-underline {
+    background-color: $accentSecond !important; // Color de la línea inferior del campo
+  }
+
+  .mat-form-field-ripple {
+    background-color: $accentPrincipal !important; // Color del efecto de ola del campo
+  }
+
+  .mat-input-element, .mat-select-value {
+    color: $text !important; // Color del texto en el campo de entrada
+  }
+
+  .mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: rgba($second, 0.3); // Color de fondo del campo de formulario
+    border-radius: 8px 8px 0 0; // Bordes redondeados en la parte superior
+  }
+
+  .mat-select-arrow {
+    color: $accentPrincipal; // Color de la flecha del select
+  }
+
+  .mat-option {
+    color: $text; // Color del texto de las opciones
+    background-color: $principal; // Color de fondo de las opciones
+
+    &:hover:not(.mat-option-disabled) {
+      background-color: rgba($second, 0.5); // Color de fondo al pasar el ratón
+    }
+  }
+
+  .mat-select-panel {
+    background-color: $principal; // Color de fondo del panel del select
+  }
+
+  .mat-icon {
+    color: $accentPrincipal; // Color de los íconos
+  }
+}
+
+.dialog-actions {
+  display: flex; // Flexbox para alinear los botones
+  justify-content: flex-end; // Justificación al final
+  gap: 16px; // Espacio entre los botones
+}
+
+.action-button {
+  padding: 10px 20px; // Espaciado interno de los botones
+  border: none; // Sin borde
+  border-radius: 20px; // Bordes redondeados
+  font-size: 1em; // Tamaño de fuente
+  font-weight: 600; // Peso de la fuente
+  cursor: pointer; // Cambia el cursor al pasar el ratón
+  transition: background-color 0.3s ease, transform 0.1s ease; // Transiciones
+
+  &:hover {
+    transform: translateY(-2px); // Efecto de desplazamiento al pasar el ratón
+  }
+
+  &:active {
+    transform: translateY(0); // Regresa al estado original al hacer clic
+  }
+
+  &.cancel {
+    background-color: $second; // Color de fondo para el botón de cancelar
+    color: $text; // Color del texto
+
+    &:hover {
+      background-color: darken($second, 10%); // Color más oscuro al pasar el ratón
+    }
+  }
+
+  &.submit {
+    background-color: $accentPrincipal; // Color de fondo para el botón de guardar
+    color: $principal; // Color del texto
+
+    &:hover {
+      background-color: darken($accentPrincipal, 10%); // Color más oscuro al pasar el ratón
+    }
+
+    &:disabled {
+      opacity: 0.5; // Opacidad cuando está deshabilitado
+      cursor: not-allowed; // Cambia el cursor al pasar el ratón
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .edit-review-dialog {
+    padding: 16px; // Menor espaciado interno en pantallas pequeñas
+  }
+
+  .dialog-title {
+    font-size: 1.5em; // Menor tamaño de fuente en pantallas pequeñas
+  }
+
+  .dialog-actions {
+    flex-direction: column; // Disposición en columna para los botones
+  }
+
+  .action-button {
+    width: 100%; // Botones de ancho completo en pantallas pequeñas
+  }
+}

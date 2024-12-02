@@ -1,0 +1,36 @@
+<div class="dashboard-container">
+    <div class="card">
+      <h2>Géneros</h2>
+      <div class="toolbar">
+        <button class="button" (click)="addGenre()">Nuevo Género</button>
+        <input type="text" placeholder="Buscar géneros" class="search-input" [(ngModel)]="searchTerm" (keyup)="onSearch()">
+      </div>
+      <div class="table-container">
+        <table class="genre-table">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let genre of genres">
+              <td>{{ genre.name }}</td>
+              <td class="action-buttons">
+                <button class="button edit" (click)="openEditDialog(genre)">Editar</button>
+                <button class="button delete" (click)="openDeleteDialog(genre)">Eliminar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+            <!-- Botones de navegación -->
+        <div class="pagination-controls">
+          <button (click)="onPageChange(page - 1)" [disabled]="page === 0">Anterior</button>
+          <span>Página {{ page + 1 }} de {{ totalPages }}</span>
+          <button (click)="onPageChange(page + 1)" [disabled]="page + 1 === totalPages">Siguiente</button>
+        </div>
+      </div>
+    </div>
+  </div>
+

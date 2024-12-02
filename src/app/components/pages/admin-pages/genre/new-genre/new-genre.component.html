@@ -1,0 +1,22 @@
+<div class="page-container">
+    <div class="form-container">
+      <h2>Añadir Nuevo Género</h2>
+      <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="genre-name">Nombre del Género</label>
+          <input
+            type="text"
+            id="genre-name"
+            name="genre-name"
+            [(ngModel)]="genre.name"
+            required
+          />
+        </div>
+        <div class="button-group">
+          <button type="button" class="button cancel" (click)="cancel()">Cancelar</button>
+          <button type="submit" class="button">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

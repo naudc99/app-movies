@@ -1,0 +1,77 @@
+<div class="dialog-overlay">
+    <div class="dialog-container">
+      <h1 class="dialog-title">Editar Película</h1>
+      <div class="dialog-content">
+        <div class="form-group">
+          <label for="movie-title">Título de la Película</label>
+          <input
+            type="text"
+            id="movie-title"
+            [(ngModel)]="data.movie.title"
+            class="input-field"
+          />
+        </div>
+  
+        <div class="form-group">
+          <label for="movie-synopsis">Sinopsis</label>
+          <textarea
+            id="movie-synopsis"
+            [(ngModel)]="data.movie.synopsis"
+            class="input-field"
+            rows="4"
+          ></textarea>
+        </div>
+  
+        <div class="form-group">
+          <label for="movie-year">Año</label>
+          <input
+            type="number"
+            id="movie-year"
+            [(ngModel)]="data.movie.year"
+            class="input-field"
+          />
+        </div>
+  
+        <div class="form-group">
+          <label for="movie-duration">Duración (minutos)</label>
+          <input
+            type="number"
+            id="movie-duration"
+            [(ngModel)]="data.movie.duration"
+            class="input-field"
+          />
+        </div>
+  
+        <div class="form-group">
+          <label for="movie-poster">Póster de la Película</label>
+          <input
+            type="file"
+            id="movie-poster"
+            (change)="onPosterSelected($event)"
+            accept="image/*"
+            class="file-input"
+          />
+          <label for="movie-poster" class="file-label">Seleccionar archivo</label>
+        </div>
+  
+        <div *ngIf="previewImage" class="image-preview">
+          <img [src]="previewImage" alt="Vista previa del póster" />
+        </div>
+  
+        <div class="form-group">
+          <label for="movie-trailer">Trailer (URL de YouTube)</label>
+          <input
+            type="url"
+            id="movie-trailer"
+            [(ngModel)]="data.movie.trailer"
+            class="input-field"
+          />
+        </div>
+  
+      <div class="dialog-actions">
+        <button (click)="onNoClick()" class="btn btn-cancel">Cancelar</button>
+        <button (click)="onSave()" class="btn btn-save">Guardar</button>
+      </div>
+    </div>
+  </div>
+  

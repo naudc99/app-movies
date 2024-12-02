@@ -1,0 +1,36 @@
+<div class="page-container">
+  <div class="form-container">
+    <h2>Añadir Nuevo Director</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="director-name">Nombre del Director</label>
+        <input
+          type="text"
+          id="director-name"
+          name="director-name"
+          [(ngModel)]="director.name"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="director-photo">Foto del Director</label>
+        <input
+          type="file"
+          id="director-photo"
+          name="director-photo"
+          (change)="onFileSelected($event)"
+          accept="image/*"
+          required
+        />
+        <!-- Vista previa de la imagen -->
+        <div *ngIf="previewImage" class="image-preview">
+          <img [src]="previewImage" alt="Vista previa de la imagen" />
+        </div>
+      </div>
+      <div class="button-group">
+        <button type="button" class="button cancel" (click)="cancel()">Cancelar</button>
+        <button type="submit" class="button">Guardar</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,1 @@
+"# app-movies"  initgit add README.mdgit commit -m "first commit"git branch -M maingit remote add origin https://github.com/naudc99/app-movies.gitgit push -u origin main

@@ -1,0 +1,109 @@
+<div class="page-container">
+    <div class="form-container">
+        <h2>Añadir Nueva Película</h2>
+        <form [formGroup]="movieForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="movie-title">Título</label>
+                <input
+                    type="text"
+                    id="movie-title"
+                    formControlName="title"
+                    class="form-control"
+                    required
+                />
+            </div>
+            <div class="form-group">
+                <label for="movie-synopsis">Sinopsis</label>
+                <textarea
+                    id="movie-synopsis"
+                    formControlName="synopsis"
+                    class="form-control"
+                    required
+                    rows="4"
+                ></textarea>
+            </div>
+            <div class="form-group">
+                <label for="movie-year">Año</label>
+                <input
+                    type="number"
+                    id="movie-year"
+                    formControlName="year"
+                    class="form-control"
+                    required
+                />
+            </div>
+            <div class="form-group">
+                <label for="movie-duration">Duración (minutos)</label>
+                <input
+                    type="number"
+                    id="movie-duration"
+                    formControlName="duration"
+                    class="form-control"
+                    required
+                />
+            </div>
+            <div class="form-group">
+                <label for="movie-poster">Póster</label>
+                <input
+                    type="file"
+                    id="movie-poster"
+                    (change)="onPosterSelected($event)"
+                    accept="image/*"
+                    required
+                />
+                <div *ngIf="previewImage" class="image-preview">
+                    <img [src]="previewImage" alt="Vista previa del póster" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="movie-trailer">Trailer (URL de YouTube)</label>
+                <input
+                    type="url"
+                    id="movie-trailer"
+                    formControlName="trailer"
+                    class="form-control"
+                    required
+                />
+            </div>
+            <div class="form-group">
+                <label for="movie-director">Director</label>
+                <select
+                    id="movie-director"
+                    formControlName="directorId"
+                    class="form-control"
+                    required
+                >
+                    <option value="">Seleccione un director</option>
+                    <option *ngFor="let director of directors" [value]="director.directorId">
+                        {{ director.name }}
+                    </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="movie-actors">Actores</label>
+                <mat-form-field appearance="fill">
+                    <mat-label>Actores</mat-label>
+                    <mat-select multiple formControlName="actors">
+                        <mat-option *ngFor="let actor of actors" [value]="actor.actorId">{{ actor.name }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            
+            <div class="form-group">
+                <label for="movie-genres">Géneros</label>
+                <mat-form-field appearance="fill">
+                    <mat-label>Géneros</mat-label>
+                    <mat-select multiple formControlName="genres">
+                        <mat-option *ngFor="let genre of genres" [value]="genre.genreId">{{ genre.name }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            
+            <div class="button-group">
+                <button type="button" class="button cancel" (click)="cancel()">Cancelar</button>
+                <button type="submit" class="button" [disabled]="!movieForm.valid">Guardar</button>
+            </div>
+        </form>
+    </div>
+  </div>
+  

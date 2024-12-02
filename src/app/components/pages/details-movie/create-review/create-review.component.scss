@@ -1,0 +1,141 @@
+$principal: #2B4162;
+$second: #385F71;
+$accentPrincipal: #D7B377;
+$accentSecond: #8F754F;
+$text: #FFFFFF;
+
+.create-review-dialog {
+  background-color: $principal;
+  color: $text;
+  font-family: 'Poppins', sans-serif;
+  padding: 24px;
+  border-radius: 10px;
+}
+
+.dialog-title {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: $accentPrincipal;
+}
+
+.dialog-content {
+  margin-bottom: 24px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+::ng-deep {
+  .mat-form-field {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .mat-form-field-label {
+    color: $accentPrincipal !important;
+  }
+
+  .mat-form-field-underline {
+    background-color: $accentSecond !important;
+  }
+
+  .mat-form-field-ripple {
+    background-color: $accentPrincipal !important;
+  }
+
+  .mat-input-element, .mat-select-value {
+    color: $text !important;
+  }
+
+  .mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: rgba($second, 0.3);
+    border-radius: 8px 8px 0 0;
+  }
+
+  .mat-select-arrow {
+    color: $accentPrincipal;
+  }
+
+  .mat-option {
+    color: $text;
+    background-color: $principal;
+
+    &:hover:not(.mat-option-disabled) {
+      background-color: rgba($second, 0.5);
+    }
+  }
+
+  .mat-select-panel {
+    background-color: $principal;
+  }
+
+  .mat-icon {
+    color: $accentPrincipal;
+  }
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+.action-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  font-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &.cancel {
+    background-color: $second;
+    color: $text;
+
+    &:hover {
+      background-color: darken($second, 10%);
+    }
+  }
+
+  &.submit {
+    background-color: $accentPrincipal;
+    color: $principal;
+
+    &:hover {
+      background-color: darken($accentPrincipal, 10%);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .create-review-dialog {
+    padding: 16px;
+  }
+
+  .dialog-title {
+    font-size: 1.5em;
+  }
+
+  .dialog-actions {
+    flex-direction: column;
+  }
+
+  .action-button {
+    width: 100%;
+  }
+}

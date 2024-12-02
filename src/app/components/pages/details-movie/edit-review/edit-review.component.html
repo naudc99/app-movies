@@ -1,0 +1,33 @@
+<div class="edit-review-dialog">
+    <h2 class="dialog-title">Editar Reseña</h2>
+    <div class="dialog-content">
+      <form [formGroup]="reviewForm">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Tu comentario</mat-label>
+          <textarea matInput formControlName="comment" placeholder="Escribe tu opinión aquí..." rows="4"></textarea>
+        </mat-form-field>
+  
+        <div class="rating-stars">
+          <span class="star" *ngFor="let rating of ratings" (click)="setRating(rating)">
+            <mat-icon *ngIf="isSelected(rating)" style="color: #ffc107;">star</mat-icon>
+            <mat-icon *ngIf="!isSelected(rating)" style="color: #ccc;">star_border</mat-icon>
+          </span>
+        </div>
+  
+        <div class="error-message" *ngIf="reviewForm.controls['score']?.invalid && reviewForm.controls['score']?.touched">
+          Debes seleccionar una valoración del 1 al 10.
+        </div>
+      </form>
+    </div>
+    <div class="dialog-actions">
+      <button class="action-button cancel" (click)="onNoClick()">Cancelar</button>
+      <button 
+        class="action-button submit" 
+        [disabled]="!reviewForm.valid" 
+        (click)="submitReview()"
+      >
+        Guardar
+      </button>
+    </div>
+  </div>
+  
