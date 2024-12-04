@@ -1,6 +1,10 @@
 <div class="page-container">
   <h1>Explorador de Películas</h1>
   <input type="text" placeholder="Buscar películas" class="search-input" [(ngModel)]="searchTerm" (keyup)="onSearch()">
+  <div class="text-center" *ngIf="isLoading">
+    <div class="spinner-border" role="status"></div>
+    <p>Cargando, por favor espera...</p>
+  </div>
   <div class="movie-grid">
     <div *ngFor="let movieWithGenres of moviesWithGenres" class="movie-card" (click)="navigateToDetailMovie(movieWithGenres.movie.movieId)">
       <img [src]="'data:image/jpeg;base64,' + movieWithGenres.movie.poster" [alt]="movieWithGenres.movie.title" class="movie-poster">

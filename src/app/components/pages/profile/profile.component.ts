@@ -20,6 +20,7 @@ export class ProfileComponent implements OnInit{
   userData!: User;
   favoriteMovies: Movie[]=[];
   watchedMovies: Movie[]=[];
+  isLoading: boolean = false;
 
   constructor(private userService: UserService, private loginSrv: LoginService, private router: Router, private dialog: MatDialog){}
 
@@ -27,6 +28,7 @@ export class ProfileComponent implements OnInit{
     this.loginSrv.user.subscribe(user => {
       this.userData = user;
       if (user.userId) {
+        this.isLoading = true;
         this.getFavoriteMovies(user.userId);
         this.getWatchedMovies(user.userId);
       }
@@ -37,10 +39,12 @@ export class ProfileComponent implements OnInit{
   getFavoriteMovies(userId: number): void {
     this.userService.getFavoriteMovies(userId).subscribe({
       next: (movies: Movie[]) => {
+        this.checkLoadingCompletion();
         this.favoriteMovies = movies;
       },
       error: (error) => {
         console.error('Error al obtener las películas favoritas:', error);
+        this.checkLoadingCompletion();
       }
     });
   }
@@ -49,12 +53,20 @@ export class ProfileComponent implements OnInit{
   getWatchedMovies(userId: number): void {
     this.userService.getWatchedMovies(userId).subscribe({
       next: (movies: Movie[]) => {
+        this.checkLoadingCompletion();
         this.watchedMovies = movies;
       },
       error: (error) => {
         console.error('Error al obtener las películas vistas:', error);
+        this.checkLoadingCompletion();
       }
     });
+  }
+  private checkLoadingCompletion(): void {
+    // Verifica si ambas listas de películas están cargadas para finalizar la carga
+    if (this.favoriteMovies.length !== 0 || this.watchedMovies.length !== 0) {
+      this.isLoading = false;
+    }
   }
 
   // Puedes obtener el ID del usuario desde tu lógica de autenticación o almacenamiento local

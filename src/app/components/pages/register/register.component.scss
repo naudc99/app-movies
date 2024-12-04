@@ -11,6 +11,10 @@
   .card-title {
     color: $accentPrincipal;
   }
+
+  .spinner-border{
+    color: $accentPrincipal;
+  }
   
   .form-control {
     background-color: $principal;
@@ -57,4 +61,26 @@
   
   p {
     color: $text;
+  }
+
+  .btn-icon {
+    background: $principal; // Color de fondo del botón
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    border-radius: 4px; // Puedes ajustar la border-radius según tu diseño
+    color: $accentPrincipal; // Color del ícono
+
+    &:hover {
+      background-color: darken($principal, 10%); // Cambia el color de fondo al pasar el mouse
+    }
+
+    mat-icon {
+      font-size: 1.5rem;
+      color: $accentPrincipal; // Color del ícono
+    }
+  }
+
+  .spinner-border{
+    color: $accentPrincipal;
   }

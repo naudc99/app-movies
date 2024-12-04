@@ -1,5 +1,10 @@
+<div class="text-center" *ngIf="isLoading">
+  <div class="spinner-border" role="status"></div>
+  <p>Cargando, por favor espera...</p>
+</div>
 <div class="container" *ngIf="movie">
   <div class="movie-details">
+    
     <div class="movie-poster">
       <img [src]="'data:image/jpeg;base64,' + movie.poster" [alt]="movie.title" class="movie-poster">
     </div>
@@ -79,14 +84,12 @@
         <div *ngIf="reviews.length === 0" class="no-reviews">No hay reseñas disponibles.</div>
     </div>
 
-    <div class="pagination-controls">
-        <button (click)="onPageChange(page - 1)" [disabled]="page === 0">Anterior</button>
-        <span>Página {{ page + 1 }} de {{ totalPages }}</span>
-        <button (click)="onPageChange(page + 1)" [disabled]="page + 1 === totalPages">Siguiente</button>
+    <div class="pagination-controls" *ngIf="reviews.length > 0">
+      <button (click)="onPageChange(page - 1)" [disabled]="page === 0">Anterior</button>
+      <span>Página {{ page + 1 }} de {{ totalPages }}</span>
+      <button (click)="onPageChange(page + 1)" [disabled]="page + 1 === totalPages">Siguiente</button>
     </div>
+    
 </div>
-
-  
-
   <a class="back-button" (click)="backToMovies()">Volver al Explorador</a>
 </div>

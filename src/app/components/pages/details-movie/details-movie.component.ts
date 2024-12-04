@@ -35,6 +35,7 @@ export class DetailsMovieComponent implements OnInit {
   isFavorite: boolean = false;
   isWatched: boolean = false;
   hasReviewed: boolean = false;
+  isLoading: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -56,8 +57,10 @@ export class DetailsMovieComponent implements OnInit {
   }
 
   loadMovie(id: number): void {
+    this.isLoading = true;
     this.movieService.getMovieById(id).subscribe(
       (movie) => {
+        this.isLoading = false;
         this.movie = movie;
         // Verifica si la película está en favoritos y otras acciones
         this.checkIfFavorite(movie.movieId);
@@ -75,6 +78,7 @@ export class DetailsMovieComponent implements OnInit {
       },
       (error) => {
         console.error('Error loading movie', error);
+        this.isLoading = false;
       }
     );
   }

@@ -7,11 +7,12 @@ import { CommonModule } from '@angular/common';
 import { merge } from 'rxjs';
 import { LoginService } from '../../../services/auth/login.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink, MatIcon],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'] // Corrección de 'styleUrl' a 'styleUrls'
 })
@@ -19,6 +20,7 @@ export class RegisterComponent implements OnInit {
   names: string[] = [];
   isValid: boolean = false;
   passHide: boolean = true;
+  isLoading: boolean = false; 
 
   name = new FormControl('', [
     Validators.required,
@@ -110,17 +112,25 @@ export class RegisterComponent implements OnInit {
     else this.errorPassMessage = 'Contraseña no válida';
   }
 
+  togglePasswordVisibility() {
+    this.passHide = !this.passHide;
+  }
+
   doRegister() {
     if (this.fgRegister.invalid) {
       return;
     }
 
+    this.isLoading = true; 
+
     this.registerSrv.register(this.fgRegister.value as RegisterRequest).subscribe({
       next: () => {
+        this.isLoading = false;
         this.fgRegister.reset();
         this.router.navigateByUrl('/login');
       },
       error: () => {
+        this.isLoading = false; 
         // Manejo de errores aquí
       },
     });

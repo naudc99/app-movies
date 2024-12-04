@@ -12,7 +12,11 @@
     <div class="movie-lists">
         <div class="movie-list">
           <h2>Películas Favoritas</h2>
-          <div *ngIf="favoriteMovies.length === 0">No tienes películas favoritas.</div>
+          <div class="text-center" *ngIf="isLoading && !favoriteMovies.length">
+            <div class="spinner-border" role="status"></div>
+            <p>Cargando, por favor espera...</p>
+          </div>
+          <div *ngIf="!isLoading && favoriteMovies.length === 0">No tienes películas favoritas.</div>
           <div class="movie-grid">
             <div *ngFor="let movie of favoriteMovies" class="movie-card" (click)="goToMovieDetails(movie.movieId)">
               <img [src]="'data:image/jpeg;base64,' + movie.poster" [alt]="movie.title" class="movie-poster">
@@ -29,7 +33,11 @@
       
         <div class="movie-list">
             <h2>Películas Vistas</h2>
-            <div *ngIf="watchedMovies.length === 0">No has visto ninguna película.</div>
+            <div class="text-center" *ngIf="isLoading && !watchedMovies.length">
+              <div class="spinner-border" role="status"></div>
+              <p>Cargando, por favor espera...</p>
+            </div>
+            <div *ngIf="!isLoading && watchedMovies.length === 0">No has visto ninguna película.</div>
             <div class="movie-grid">
               <div *ngFor="let movie of watchedMovies" class="movie-card" (click)="goToMovieDetails(movie.movieId)">
                 <img [src]="'data:image/jpeg;base64,' + movie.poster" [alt]="movie.title" class="movie-poster">

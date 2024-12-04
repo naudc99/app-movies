@@ -2,6 +2,11 @@
   <div class="card mx-auto custom-card">
     <div class="card-body">
       <h2 class="card-title text-center">Iniciar sesión</h2>
+      <div class="text-center" *ngIf="isLoading">
+        <div class="spinner-border" role="status"></div>
+        <p>Cargando, por favor espera...</p>
+      </div>
+      
       <form [formGroup]="fgLogin" (ngSubmit)="doLogin()">
         <!-- Correo Electrónico -->
         <div class="form-group">
@@ -16,11 +21,28 @@
         <!-- Contraseña -->
         <div class="form-group">
           <label for="inputPassword">Contraseña</label>
-          <input formControlName="password" type="password" id="inputPassword" class="form-control" required>
+          <div class="input-group">
+            <input 
+              [type]="passHide ? 'password' : 'text'" 
+              formControlName="password" 
+              id="inputPassword" 
+              class="form-control" 
+              required
+            >
+            <button 
+              mat-icon-button 
+              type="button" 
+              (click)="togglePasswordVisibility()" 
+              class="btn-icon"
+            >
+              <mat-icon>{{ passHide ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
+          </div>
           <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">
             <div *ngIf="password.errors?.['required']">La contraseña es requerida.</div>
           </div>
         </div>
+        
 
         <!-- Botón Iniciar Sesión (centrado) -->
         <div class="text-center">

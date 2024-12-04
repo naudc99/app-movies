@@ -19,6 +19,7 @@ export class LandingComponent implements OnInit {
   size: number = 20; // Número de películas por página
   isLoading: boolean = false; // Controlar el estado de carga
   searchTerm: string = '';
+  
 
   constructor(
     private movieService: MovieService,
